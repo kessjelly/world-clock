@@ -19,13 +19,14 @@
     <div class="container">
       <h1>World Clock</h1>
 
-      <select>
+      <select id="city">
         <option value="">Select a city...</option>
-        <option value="">London</option>
-        <option value="">New York</option>
-        <option value="">Mexico</option>
-        <option value="">Sydney</option>
+        <option value="Europe/London">London</option>
+        <option value="America/New_York">New York</option>
+        <option value="Asia/Tokyo">Tokyo</option>
+        <option value="Atlantic/Madeira">Madeira</option>
       </select>
+      <div id="cities"></div>
       <div class="city" id="local">
         <div>
           <h2>Brisbane</h2>
@@ -34,6 +35,7 @@
         <div class="time" id="time"></div>
       </div>
     </div>
+  </div>
 
     <footer>
       This project was coded by
