@@ -72,6 +72,21 @@ select {
   font-size: 18px;
 }
 
+button {
+  margin: 20px auto;
+  background-color: #a5a5a5;
+  border: none;
+  border-radius: 5px;
+  padding: 7px;
+  box-shadow: 5px 5px 5px black;
+  font-size: 8px;
+  font-weight: bold;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
 a {
   color: palevioletred;
 }
