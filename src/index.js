@@ -1,11 +1,11 @@
-function updateLocalTime() {
-  let localElement = document.querySelector("#local");
-  let localDateElement = localElement.querySelector(".date");
-  let localTimeElement = localElement.querySelector(".time");
-  let localTime = moment().tz("Australia/Brisbane");
+function updateTime() {
+  let brisbaneElement = document.querySelector("#brisbane");
+  let brisbaneDateElement = brisbaneElement.querySelector(".date");
+  let brisbaneTimeElement = brisbaneElement.querySelector(".time");
+  let brisbaneTime = moment().tz("Australia/Brisbane");
 
-  localDateElement.innerHTML = moment().format("MMMM d, YYYY");
-  localTimeElement.innerHTML = localTime.format(
+  brisbaneDateElement.innerHTML = brisbaneTime.format("MMMM D, YYYY");
+  brisbaneTimeElement.innerHTML = brisbaneTime.format(
     "HH:mm:ss [<small>]A[</small>]"
   );
 }
@@ -13,23 +13,23 @@ function updateLocalTime() {
 function updateCity(event) {
   let cityTimeZone = event.target.value;
   let cityTime = moment().tz(cityTimeZone);
-  let cityNameElement = cityTimeZone.replace("_", " ").split("/")[1];
+  let cityName = cityTimeZone.replace("_", " ").split("/")[1];
   let citiesElement = document.querySelector("#cities");
-  citiesElement.innerHTML = `  
+  citiesElement.innerHTML += `  
     <div class="city">
       <div>
-          <h2>${cityNameElement}</h2>
+          <h2>${cityName}</h2>
           <div class="date">${cityTime.format("MMMM D, YYYY")}</div>
         </div>
         <div class="time">${cityTime.format(
-          "HH:mm:ss [<small>]A[</small>]"
-        )}</div>
+          "HH:mm:ss"
+        )} <small>${cityTime.format("A")}</small></div>
       </div>
     </div>`;
 }
 
-updateLocalTime();
-setInterval(updateLocalTime, 1000);
+updateTime();
+setInterval(updateTime, 1000);
 
 let citiesSelectElement = document.querySelector("#city");
 citiesSelectElement.addEventListener("change", updateCity);
