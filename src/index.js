@@ -52,10 +52,15 @@ function updateCity(event) {
     </div>`;
 }
 
+function refreshPage() {
+  location.reload();
+}
+
 updateTime();
 setInterval(updateTime, 1000);
 
 let citiesSelectElement = document.querySelector("#city");
 citiesSelectElement.addEventListener("change", updateCity);
 
-
+let refreshButton = document.querySelector("#refresh-button");
+refreshButton.addEventListener("click", refreshPage);
