@@ -1,11 +1,15 @@
 function updateTime() {
-  let brisbaneElement = document.querySelector("#brisbane");
-  let brisbaneDateElement = brisbaneElement.querySelector(".date");
-  let brisbaneTimeElement = brisbaneElement.querySelector(".time");
-  let brisbaneTime = moment().tz("Australia/Brisbane");
+  let localElement = document.querySelector("#local");
+  let localTimeZone = moment.tz.guess();
+  let localMoment = moment().tz(localTimeZone);
 
-  brisbaneDateElement.innerHTML = brisbaneTime.format("MMMM D, YYYY");
-  brisbaneTimeElement.innerHTML = brisbaneTime.format(
+  let localNameElement = localElement.querySelector(".name");
+  let localDateElement = localElement.querySelector(".date");
+  let localTimeElement = localElement.querySelector(".time");
+
+  localNameElement.innerHTML = localTimeZone.replace("_", " ").split("/")[1];
+  localDateElement.innerHTML = localMoment.format("MMMM D, YYYY");
+  localTimeElement.innerHTML = localMoment.format(
     "HH:mm:ss [<small>]A[</small>]"
   );
 }
