@@ -42,14 +42,25 @@ function updateCity(event) {
   let citiesElement = document.querySelector("#cities");
   citiesElement.innerHTML += `  
     <div class="city" data-timezone="${cityTimeZone}">
-      <div>
-        <h2>${cityName}</h2>
+    <div class="city-header">
+    <h2>${cityName}</h2>
         <div class="date">${cityMoment.format("MMMM D, YYYY")}</div>
       </div>
       <div class="time">${cityMoment.format(
         "HH:mm:ss [<small>]A[</small>]"
       )}</div>
     </div>`;
+}
+
+function removeCities(event) {
+  if (event.target.classList.contains("remove-btn")) {
+    const timeZone = event.target.getAttribute("data-remove");
+    selectedCities = selectedCities.filter((tz) => tz !== timeZone);
+    const cityElement = document.querySelector(`[data-timezone="${timeZone}"]`);
+    if (cityElement) {
+      cityElement.remove();
+    }
+  }
 }
 
 function refreshPage() {
@@ -64,3 +75,6 @@ citiesSelectElement.addEventListener("change", updateCity);
 
 let refreshButton = document.querySelector("#refresh-button");
 refreshButton.addEventListener("click", refreshPage);
+
+let removeCity = document.querySelector("#cities");
+removeCity.addEventListener("click", removeCities);
